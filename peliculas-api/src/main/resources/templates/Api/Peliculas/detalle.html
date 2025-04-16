@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Película</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Detalle de la Película</h1>
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <td th:text="${pelicula.id}"></td>
+        </tr>
+        <tr>
+            <th>Imagen</th>
+            <td>
+                <img th:src="${pelicula.imagenUrl}"
+                     alt="Imagen de la película"
+                     class="img-thumbnail"
+                     style="max-width: 200px;"
+                     onerror="this.src='https://cdn-icons-png.flaticon.com/128/5097/5097477.png';">
+            </td>
+        </tr>
+        <tr>
+            <th>Título</th>
+            <td th:text="${pelicula.titulo}"></td>
+        </tr>
+        <tr>
+            <th>Subtítulo</th>
+            <td th:text="${pelicula.subtitulo}"></td>
+        </tr>
+        <tr>
+            <th>Año</th>
+            <td th:text="${pelicula.año}"></td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td th:text="${pelicula.duracion} + ' min'"></td>
+        </tr>
+        <tr>
+            <th>Clasificación</th>
+            <td th:text="${pelicula.clasificacion}"></td>
+        </tr>
+        <tr>
+            <th>Idioma Original</th>
+            <td th:text="${pelicula.idiomaOriginal}"></td>
+        </tr>
+        <tr>
+            <th>Sinopsis</th>
+            <td th:text="${pelicula.sinopsis}"></td>
+        </tr>
+        <tr>
+            <th>Presupuesto Total</th>
+            <td th:text="${pelicula.presupuestoTotal}"></td>
+        </tr>
+        <tr>
+            <th>Gastos Generales</th>
+            <td th:text="${pelicula.gastosGenerales}"></td>
+        </tr>
+        <tr>
+            <th>Ingresos Estimados</th>
+            <td th:text="${pelicula.ingresosEstimados}"></td>
+        </tr>
+        <tr>
+            <th>Ingresos Reales</th>
+            <td th:text="${pelicula.ingresosReales}"></td>
+        </tr>
+        <tr>
+            <th>Fecha de Lanzamiento Público</th>
+            <td th:text="${pelicula.fechaLanzamientoPublico}"></td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td th:text="${pelicula.estado}"></td>
+        </tr>
+        <tr>
+            <th>Género</th>
+            <td th:text="${pelicula.genero.nombre}"></td>
+        </tr>
+        <tr>
+            <th>Director</th>
+            <td th:text="${pelicula.director.nombre}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <a href="/api/peliculas" class="btn btn-primary">Volver</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"></script>
+</body>
+</html>

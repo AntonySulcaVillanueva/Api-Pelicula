@@ -1,0 +1,33 @@
+<!-- templates/Api/fragments/navbar.html -->
+<header th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/login/menu}">
+            <img src="/img/logo.png" alt="EON" height="40" class="me-2">
+            <span>Grupo Cinema</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/peliculas}">Peliculas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/generos}">Generos Pelicula</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/peliculas-actores}">Asignar A Pelicula</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/actores}">Actores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/api/directores}">Directores</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

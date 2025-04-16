@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Actor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" th:replace="~{Api/fragments/navhar :: navbar}"></div>
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Editar Actor</h1>
+    <form th:action="@{'/api/actores/actualizar/' + ${actor.id}}" method="post">
+        <div class="mb-3">
+            <label for="fotoUrl" class="form-label">Foto (URL)</label>
+            <input type="url" class="form-control" id="fotoUrl" name="fotoUrl" th:value="${actor.fotoUrl}" required>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:value="${actor.nombre}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" th:value="${actor.apellido}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" th:value="${actor.fechaNacimiento}" required>
+        </div>
+        <div class="mb-3">
+            <label for="nacionalidad" class="form-label">Nacionalidad</label>
+            <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" th:value="${actor.nacionalidad}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="emailAgente" class="form-label">Email del Agente</label>
+            <input type="email" class="form-control" id="emailAgente" name="emailAgente" th:value="${actor.emailAgente}" required>
+        </div>
+        <div class="mb-3">
+            <label for="salarioMensual" class="form-label">Salario Mensual</label>
+            <input type="number" step="0.01" class="form-control" id="salarioMensual" name="salarioMensual" th:value="${actor.salarioMensual}" required>
+        </div>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select class="form-select" id="estado" name="estado" required>
+                <option th:selected="${actor.estado == 'Activo'}" value="Activo">Activo</option>
+                <option th:selected="${actor.estado == 'Inactivo'}" value="Inactivo">Inactivo</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="notas" class="form-label">Notas</label>
+            <textarea class="form-control" id="notas" name="notas" maxlength="500" th:text="${actor.notas}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+        <a href="/api/actores" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

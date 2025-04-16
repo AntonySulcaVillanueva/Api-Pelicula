@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Película</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Editar Película</h1>
+    <form th:action="@{'/api/peliculas/actualizar/' + ${pelicula.id}}" th:object="${pelicula}" method="post">
+        <div class="mb-3">
+            <label for="imagenUrl" class="form-label">URL de la Imagen</label>
+            <input type="text" id="imagenUrl" class="form-control" th:field="*{imagenUrl}">
+        </div>
+
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" id="titulo" class="form-control" th:field="*{titulo}">
+        </div>
+
+        <div class="mb-3">
+            <label for="subtitulo" class="form-label">Subtítulo</label>
+            <input type="text" id="subtitulo" class="form-control" th:field="*{subtitulo}">
+        </div>
+
+        <div class="mb-3">
+            <label for="año" class="form-label">Año</label>
+            <input type="number" id="año" class="form-control" th:field="*{año}">
+        </div>
+
+        <div class="mb-3">
+            <label for="duracion" class="form-label">Duración (minutos)</label>
+            <input type="number" id="duracion" class="form-control" th:field="*{duracion}">
+        </div>
+
+        <div class="mb-3">
+            <label for="clasificacion" class="form-label">Clasificación</label>
+            <input type="text" id="clasificacion" class="form-control" th:field="*{clasificacion}">
+        </div>
+
+        <div class="mb-3">
+            <label for="idiomaOriginal" class="form-label">Idioma Original</label>
+            <input type="text" id="idiomaOriginal" class="form-control" th:field="*{idiomaOriginal}">
+        </div>
+
+        <div class="mb-3">
+            <label for="sinopsis" class="form-label">Sinopsis</label>
+            <textarea id="sinopsis" class="form-control" th:field="*{sinopsis}"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="presupuestoTotal" class="form-label">Presupuesto Total</label>
+            <input type="number" id="presupuestoTotal" class="form-control" th:field="*{presupuestoTotal}">
+        </div>
+
+        <div class="mb-3">
+            <label for="gastosGenerales" class="form-label">Gastos Generales</label>
+            <input type="number" id="gastosGenerales" class="form-control" th:field="*{gastosGenerales}">
+        </div>
+
+        <div class="mb-3">
+            <label for="ingresosEstimados" class="form-label">Ingresos Estimados</label>
+            <input type="number" id="ingresosEstimados" class="form-control" th:field="*{ingresosEstimados}">
+        </div>
+
+        <div class="mb-3">
+            <label for="fechaLanzamientoPublico" class="form-label">Fecha de Lanzamiento Público</label>
+            <input type="date" id="fechaLanzamientoPublico" class="form-control" th:field="*{fechaLanzamientoPublico}">
+        </div>
+
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select id="estado" class="form-select" th:field="*{estado}">
+                <option value="En Producción">En Producción</option>
+                <option value="Estrenada">Estrenada</option>
+                <option value="Cancelada">Cancelada</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="genero" class="form-label">Género</label>
+            <select id="genero" class="form-select" th:field="*{genero.id}">
+                <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nombre}"
+                        th:selected="${pelicula.genero?.id == genero.id}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="director" class="form-label">Director</label>
+            <select id="director" class="form-select" th:field="*{director.id}">
+                <option th:each="director : ${directores}" th:value="${director.id}" th:text="${director.nombre}"
+                        th:selected="${pelicula.director?.id == director.id}"></option>
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/api/peliculas" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"></script>
+</body>
+</html>

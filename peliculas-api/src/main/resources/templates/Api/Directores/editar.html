@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Director</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container" th:replace="~{Api/fragments/navhar :: navbar}"></div>
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Editar Director</h1>
+    <form th:action="@{'/api/directores/actualizar/' + ${director.id}}" method="post">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:value="${director.nombre}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" th:value="${director.apellido}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" th:value="${director.fechaNacimiento}" required>
+        </div>
+        <div class="mb-3">
+            <label for="nacionalidad" class="form-label">Nacionalidad</label>
+            <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" th:value="${director.nacionalidad}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="emailContacto" class="form-label">Email de Contacto</label>
+            <input type="email" class="form-control" id="emailContacto" name="emailContacto" th:value="${director.emailContacto}" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefonoContacto" class="form-label">Teléfono de Contacto</label>
+            <input type="text" class="form-control" id="telefonoContacto" name="telefonoContacto" th:value="${director.telefonoContacto}" maxlength="15">
+        </div>
+        <div class="mb-3">
+            <label for="direccionOficina" class="form-label">Dirección de Oficina</label>
+            <input type="text" class="form-control" id="direccionOficina" name="direccionOficina" th:value="${director.direccionOficina}" maxlength="255">
+        </div>
+        <div class="mb-3">
+            <label for="imagenUrl" class="form-label">URL de la Imagen</label>
+            <input type="url" class="form-control" id="imagenUrl" name="imagenUrl" th:value="${director.imagenUrl}" maxlength="500">
+        </div>
+        <div class="mb-3">
+            <label for="salarioMensual" class="form-label">Salario Mensual</label>
+            <input type="number" step="0.01" class="form-control" id="salarioMensual" name="salarioMensual" th:value="${director.salarioMensual}" required>
+        </div>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select class="form-select" id="estado" name="estado" required>
+                <option th:selected="${director.estado == 'Activo'}" value="Activo">Activo</option>
+                <option th:selected="${director.estado == 'Inactivo'}" value="Inactivo">Inactivo</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+        <a href="/api/directores" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

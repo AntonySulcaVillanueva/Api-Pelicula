@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Género</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" th:replace="~{Api/fragments/navhar :: navbar}"></div>
+<div class="container mt-5">
+  <h1 class="text-center text-primary mb-4">Crear Nuevo Género</h1>
+  <form th:action="@{'/api/generos/guardar'}" method="post">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" maxlength="100" placeholder="Ingresa el nombre del género" required>
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea class="form-control" id="descripcion" name="descripcion" maxlength="255" placeholder="Ingresa una descripción del género" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="/api/generos" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

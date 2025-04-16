@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Géneros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" th:replace="~{Api/fragments/navhar :: navbar}"></div>
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Lista de Géneros</h1>
+    <div class="text-end mb-3">
+        <a href="/api/generos/crear" class="btn btn-success">+ Crear Nuevo Género</a>
+    </div>
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark text-center">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Creado En</th>
+            <th>Actualizado En</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="genero : ${generos}">
+            <td th:text="${genero.id}"></td>
+            <td th:text="${genero.nombre}"></td>
+            <td th:text="${genero.descripcion}"></td>
+            <td th:text="${genero.creadoEn}"></td>
+            <td th:text="${genero.actualizadoEn}"></td>
+            <td>
+                <a th:href="@{'/api/generos/' + ${genero.id}}" class="btn btn-info btn-sm">Ver</a>
+                <a th:href="@{'/api/generos/editar/' + ${genero.id}}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{'/api/generos/eliminar/' + ${genero.id}}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Estás seguro de que deseas eliminar este género?')">Eliminar</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

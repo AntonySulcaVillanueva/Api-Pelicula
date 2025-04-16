@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Actores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" th:replace="~{Api/fragments/navhar :: navbar}"></div>
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Lista de Actores</h1>
+    <div class="text-end mb-3">
+        <a href="/api/actores/crear" class="btn btn-success">+ Crear Nuevo Actor</a>
+    </div>
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark text-center">
+        <tr>
+            <th>ID</th>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Nacionalidad</th>
+            <th>Email del Agente</th>
+            <th>Salario Mensual</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="actor : ${actores}">
+            <td th:text="${actor.id}"></td>
+            <td>
+                <img th:src="${actor.fotoUrl}" alt="Foto de Actor" class="img-thumbnail" style="max-width: 60px;">
+            </td>
+            <td th:text="${actor.nombre}"></td>
+            <td th:text="${actor.apellido}"></td>
+            <td th:text="${actor.fechaNacimiento}"></td>
+            <td th:text="${actor.nacionalidad}"></td>
+            <td>
+                <a th:href="'mailto:' + ${actor.emailAgente}" th:text="${actor.emailAgente}"></a>
+            </td>
+            <td th:text="${actor.salarioMensual}"></td>
+            <td>
+                <span th:classappend="${actor.estado == 'Activo' ? 'text-success' : 'text-danger'}" th:text="${actor.estado}"></span>
+            </td>
+            <td>
+                <a th:href="@{'/api/actores/' + ${actor.id}}" class="btn btn-info btn-sm">Ver</a>
+                <a th:href="@{'/api/actores/editar/' + ${actor.id}}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{'/api/actores/eliminar/' + ${actor.id}}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Estás seguro de que deseas eliminar este actor?')">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

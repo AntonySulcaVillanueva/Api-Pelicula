@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Género</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" th:replace="~{Api/fragments/navhar :: navbar}"></div>
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Detalle del Género</h1>
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9" th:text="${genero.id}"></dd>
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9" th:text="${genero.nombre}"></dd>
+        <dt class="col-sm-3">Descripción</dt>
+        <dd class="col-sm-9" th:text="${genero.descripcion}"></dd>
+        <dt class="col-sm-3">Creado En</dt>
+        <dd class="col-sm-9" th:text="${genero.creadoEn}"></dd>
+        <dt class="col-sm-3">Actualizado En</dt>
+        <dd class="col-sm-9" th:text="${genero.actualizadoEn}"></dd>
+    </dl>
+    <div class="text-center">
+        <a href="/api/generos" class="btn btn-primary">Volver a la Lista</a>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
